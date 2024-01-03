@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-dm7o1t9bxw0ac@xphe2-_zkb^7_taln4c=k6lbg7n1*owk-13h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['predict.com', 'https://predict.com', 'http://predict.com']
+ALLOWED_HOSTS = ['harispredict.com',
+                 'https://harispredict.com', 'http://harispredict.com']
 
 # Application definition
 
