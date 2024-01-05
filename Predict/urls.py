@@ -7,5 +7,5 @@ urlpatterns = [
     path("", views.index, name="home"),
     path('predict_car_brand/',
          views.predict_car_brand, name='car_brand'),
-    # path('predict_landmarks/', views.predict_landmarks, name='predict_landmarks'),
+    path('predict_landmarks/', views.predict_landmarks, name='predict_landmarks'),
 ]
