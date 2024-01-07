@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import CarBrand
+from .models import projects
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -19,7 +19,15 @@ class_labels = ['Audi', 'Hyundai Creta', 'Mahindra Scorpio',
 
 
 def index(request):
-    return render(request, 'Predict/index.html')
+    projects = {
+        'image': '../static/Predict/3.jpg',
+        'alt': 'Project1',
+        'title': 'Project1',
+        'description': 'The cat landmark model 1 uses facial landmarks...',
+        'link': '/home/predict_landmarks/'
+    }
+
+    return render(request, 'Predict/index.html', {'project': projects})
 
 
 @tf.function
@@ -55,8 +63,8 @@ def predict_car_brand(request):
         elapsed_time = end_time - start_time
         print(f"Time taken to make predictions: {elapsed_time} seconds")
 
-        # Save the predicted brand to the CarBrand model (optional)
-        car_brand = CarBrand.objects.create(name=label)
+        # # Save the predicted brand to the CarBrand model (optional)
+        # car_brand = CarBrand.objects.create(name=label)
 
         # Return the predicted brand as JSON
         return JsonResponse({'predicted_brand': label, 'elapsed_time': elapsed_time})
@@ -118,6 +126,4 @@ def predict_landmarks(request):
         response = img_encoded.tobytes()
 
         return HttpResponse(response, content_type='image/png')
-
-    # Replace 'your_template.html' with the actual template name
     return render(request, 'Predict/cat_landmark.html')

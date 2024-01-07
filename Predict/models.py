@@ -1,11 +1,9 @@
 from django.db import models
 
-# Create your models here.
-# car_classification/models.py
 
-
-class CarBrand(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
+class projects(models.Model):
+    project_image_path = models.CharField(max_length=100, null=True)
+    project_alt = models.CharField(max_length=100, null=True)
+    project_title = models.CharField(max_length=100, null=True)
+    project_description = models.TextField()
+    project_link = models.CharField(max_length=100, null=True)
