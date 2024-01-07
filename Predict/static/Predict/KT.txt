@@ -25,3 +25,8 @@ django-admin
     startproject
     test
     testserver
+
+
+Django orm== Python manage.py shell
+
+Attendance system

@@ -19,15 +19,9 @@ class_labels = ['Audi', 'Hyundai Creta', 'Mahindra Scorpio',
 
 
 def index(request):
-    projects = {
-        'image': '../static/Predict/3.jpg',
-        'alt': 'Project1',
-        'title': 'Project1',
-        'description': 'The cat landmark model 1 uses facial landmarks...',
-        'link': '/home/predict_landmarks/'
-    }
+    context = {'projects': projects.objects.all()}
 
-    return render(request, 'Predict/index.html', {'project': projects})
+    return render(request, 'Predict/index.html', context)
 
 
 @tf.function
