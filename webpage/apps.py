@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PredictConfig(AppConfig):
+class webpageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Predict'
+    name = 'webpage'

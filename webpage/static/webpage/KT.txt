@@ -1,3 +1,16 @@
+Master Project Pipeline
+1. Build dynamic basic webspage containing all my projects.
+2. Build dynamic project description page.
+3. Keep iterating
+
+Plan
+a. Index.html
+1. navbar containing brand, github link, linkedin link, email me, call me, download resume.
+2. footer
+b. Project description
+1. inherit navbar and footer from index.html
+
+
 django-admin
 
     check
