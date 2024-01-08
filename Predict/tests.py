@@ -11,7 +11,7 @@ class PredictTests(TestCase):
 
     def test_index_view(self):
         # Test the index view
-        response = self.client.get(reverse('index'))
+        response = self.client.get(reverse("index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Test Project')
 
