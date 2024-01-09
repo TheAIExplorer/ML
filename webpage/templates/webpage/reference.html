@@ -1,13 +1,13 @@
-{% comment %} {% extends 'Predict/base.html' %}
+{% extends 'webpage/base.html' %}
 
-{% block title %}Car{% endblock %}
+{% block title %}{{project.project_title}}{% endblock %}
 
 {% block content %}
 {% load static %}
 <div class="container-fluid text-light text-center mt-5">
-  <img src="{% static 'Predict/car.jpg' %}" alt="Car Image" class="img-fluid rounded-square mb-3"
+  <img src="{% static 'webpage/cat.jpeg' %}" alt="Cat Image" class="img-fluid rounded-square mb-3"
     style="max-width: 350px; max-height: 350px; border: 1px solid #ffffff">
-  <h1 class="mb-4 text-glow">Predict Car Brand</h1>
+  <h1 class="mb-4 text-glow">{{project.project_title}}</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row justify-content-center">
@@ -21,4 +21,4 @@
     <button type="submit" class="btn orange-btn">Predict</button>
   </form>
 </div>
-{% endblock %} {% endcomment %}
+{% endblock %}

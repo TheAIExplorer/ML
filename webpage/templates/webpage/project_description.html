@@ -1,13 +1,13 @@
-{% comment %} {% extends 'Predict/base.html' %}
+{% extends 'webpage/base.html' %}
 
-{% block title %}Cat{% endblock %}
+{% block title %}Project {{project.project_id}}{% endblock %}
 
 {% block content %}
 {% load static %}
 <div class="container-fluid text-light text-center mt-5">
-  <img src="{% static 'Predict/cat.jpeg' %}" alt="Cat Image" class="img-fluid rounded-square mb-3"
+  <img src="{{project.image.url}}" alt="Cat Image" class="img-fluid rounded-square mb-3"
     style="max-width: 350px; max-height: 350px; border: 1px solid #ffffff">
-  <h1 class="mb-4 text-glow">Cat Face Landmark Detection</h1>
+  <h1 class="mb-4 text-glow">Project {{project.project_id}}</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row justify-content-center">
@@ -19,6 +19,11 @@
       </div>
     </div>
     <button type="submit" class="btn orange-btn">Predict</button>
+
+    <!-- Box for Project Description -->
+    <div class="description-box mt-3">
+      <p >{{ project.project_description }}</p>
+    </div>
   </form>
 </div>
-{% endblock %} {% endcomment %}
+{% endblock %}

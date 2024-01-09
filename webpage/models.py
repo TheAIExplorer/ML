@@ -1,13 +1,16 @@
 from django.db import models
+import os
+
+
+def project_image_filename(instance, filename):
+    filename, extension = os.path.splitext(filename)
+    return f'images/project_{instance.project_id}{extension}'
 
 
 class projects(models.Model):
-    project_image_path = models.CharField(
-        max_length=100, null=True, blank=True)
-    project_alt = models.CharField(max_length=100, null=True, blank=True)
-    project_title = models.CharField(max_length=100, null=True, blank=True)
-    project_description = models.TextField(null=True, blank=True)
-    project_link = models.CharField(max_length=100, null=True, blank=True)
+    project_id = models.IntegerField(primary_key=True)
+    image = models.ImageField(upload_to=project_image_filename)
+    project_description = models.TextField(blank=True)
 
     def __str__(self):
-        return self.project_title
+        return 'Project_'+str(self.project_id)
