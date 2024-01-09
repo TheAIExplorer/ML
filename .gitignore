@@ -1,2 +1,5 @@
 # .gitignore
 *.h5
+*.jpg
+*.jpeg
+*.png
