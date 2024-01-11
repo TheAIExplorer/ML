@@ -5,7 +5,7 @@
 {% block content %}
 {% load static %}
 <div class="container-fluid text-light text-center mt-5">
-  <img src="{{project.image.url}}" alt="Cat Image" class="img-fluid rounded-square mb-3"
+  <img src="{{project.image.url}}" alt="Cat Image" class="img-fluid rounded-square mx-auto d-block mb-3"
     style="max-width: 350px; max-height: 350px; border: 1px solid #ffffff">
   <h1 class="mb-4 text-glow">Project {{project.project_id}}</h1>
   <form method="post" enctype="multipart/form-data">

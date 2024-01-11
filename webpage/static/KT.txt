@@ -1,8 +1,10 @@
+#####
 Master Project Pipeline
 1. Build dynamic basic webspage containing all my projects.
 2. Build dynamic project description page.
 3. Keep iterating
 
+#####
 Plan
 a. Index.html
 1. navbar containing brand, github link, linkedin link, email me, call me, download resume.
@@ -10,39 +12,12 @@ a. Index.html
 b. Project description
 1. inherit navbar and footer from index.html
 
-
-django-admin
-
-    check
-    compilemessages
-    createcachetable
-    dbshell
-    diffsettings
-    dumpdata
-    flush
-    inspectdb
-    loaddata
-    makemessages
-    makemigrations
-    migrate
-    optimizemigration
-    runserver
-    sendtestemail
-    shell
-    showmigrations
-    sqlflush
-    sqlmigrate
-    sqlsequencereset
-    squashmigrations
-    startapp
-    startproject
-    test
-    testserver
+#####
+Projects to work on in future:
+1. Attendance system using facerecognition
 
 
 Django orm== Python manage.py shell
-
-Attendance system
 
 1. Version Control with Git:
 Setup:
@@ -186,3 +161,61 @@ Implement security best practices, including HTTPS, proper user authentication, 
 - **Environment Variables:** Use environment variables for sensitive information.
 
 Remember to refer to the documentation of your chosen hosting provider for specific instructions. Deploying a Django project can have variations depending on the platform you choose.
+
+
+#####
+python -m  pipreqs.pipreqs .
+
+
+
+#####
+Full cycle of user interaction:
+
+Certainly! Let's walk through the step-by-step process of what happens when a user opens a URL in their browser to access a web application deployed on AWS. For this example, we'll assume a Django application running with Gunicorn or uWSGI behind Nginx as the web server:
+
+1. **User Enters URL:**
+   - The user opens their web browser and enters the URL of the web application (e.g., `http://www.example.com`).
+
+2. **DNS Resolution:**
+   - The browser sends a DNS (Domain Name System) request to resolve the domain name (`www.example.com`) to an IP address. If the DNS resolution is successful, the browser gets the IP address of the server hosting the application.
+
+3. **Load Balancer (Optional):**
+   - If you are using a load balancer (e.g., AWS Elastic Load Balancer - ELB), the DNS might resolve to the load balancer's IP address. The load balancer distributes incoming traffic among multiple instances to ensure even load distribution.
+
+4. **Auto Scaling (Optional):**
+   - If you have configured Auto Scaling, the load balancer may automatically adjust the number of instances based on the current demand. New instances can be launched if needed.
+
+5. **HTTP Request to Web Server (Nginx or Apache):**
+   - The browser sends an HTTP request to the IP address or domain obtained in the DNS resolution. This request is received by the web server (e.g., Nginx or Apache) running on an EC2 instance.
+
+6. **Web Server as Reverse Proxy:**
+   - The web server acts as a reverse proxy and forwards the request to the Gunicorn or uWSGI server running the Django application.
+
+7. **Gunicorn or uWSGI Handling Request:**
+   - Gunicorn or uWSGI receives the HTTP request and forwards it to the Django application. It manages multiple requests concurrently, handling the communication between the web server and the Django application.
+
+8. **Django Application Processing Request:**
+   - The Django application processes the request, executing the necessary business logic. It may interact with the database to retrieve or store data.
+
+9. **Database Interaction:**
+   - If the application needs data from a database (e.g., Amazon RDS), it sends queries to the database to retrieve information. The database processes the queries and returns the requested data.
+
+10. **Dynamic Content Generation:**
+    - The Django application generates dynamic content based on the request and the data retrieved from the database. This content may include HTML, CSS, JavaScript, and other resources.
+
+11. **Static Files (S3 or CloudFront):**
+    - If the application serves static files (images, stylesheets, scripts), they may be stored in Amazon S3 for storage or served through CloudFront for content delivery, improving performance.
+
+12. **Response Sent to Gunicorn or uWSGI:**
+    - The generated content is sent back to Gunicorn or uWSGI, which in turn sends it back to the web server.
+
+13. **Response to Web Server:**
+    - The web server receives the response from Gunicorn or uWSGI and forwards it back to the user's browser.
+
+14. **User Sees Web Application:**
+    - The user's browser receives the response and renders the web application. The user sees the requested page, which may include HTML content, images, styles, and interactive elements.
+
+15. **Web Application Interaction:**
+    - The user can interact with the web application by clicking links, submitting forms, or navigating to other pages. The process repeats as the user interacts with different parts of the application.
+
+This step-by-step process illustrates the journey of a user's request from entering a URL to viewing a web application. Each component in the architecture, including DNS, load balancing, web servers, application servers, and databases, plays a crucial role in delivering a seamless and responsive user experience.
